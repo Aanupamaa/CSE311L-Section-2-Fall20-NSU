@@ -1,4 +1,4 @@
 SELECT Last_Name AS 'last name',Job_Id AS 'job id',Hire_Date AS 'start date' 
 FROM employees
-WHERE Hire_Date BETWEEN '2008-05-01' AND '2008-02-20' 
-ORDER BY ASC;
+WHERE Hire_Date BETWEEN '2008-02-20' AND '2008-05-01' 
+ORDER BY Hire_Date ASC;
