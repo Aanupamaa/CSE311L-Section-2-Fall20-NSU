@@ -1,0 +1,25 @@
+1.SELECT Last_Name, Salary
+FROM employees
+WHERE Last_Name='Abel';
+
+SELECT Last_Name, Salary
+FROM employees
+WHERE Salary> (SELECT Salary
+FROM employees
+WHERE Last_Name='Abel');
+
+2.SELECT Last_Name, Job_Id,Salary
+FROM employees
+WHERE Job_Id= (SELECT Job_Id
+FROM employees
+WHERE Employee_Id=141)
+AND Salary>(SELECT Salary
+FROM employees
+WHERE Employee_Id=143);
+
+3.SELECT Last_Name,Salary
+FROM employees
+WHERE Salary = (SELECT MIN(Salary)
+                FROM employees);
+
+4.
