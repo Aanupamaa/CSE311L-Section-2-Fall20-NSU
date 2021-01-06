@@ -1,0 +1,13 @@
+q1.1. SELECT s.sname FROM student s JOIN enrolled e ON (s.snum=e.snum) JOIN class c ON (e.cname=c.name) JOIN faculty f ON (c.fid=f.fid) WHERE s.major LIKE '%History%' AND f.fname LIKE 'Ivana Teach';
+q1.3. SELECT s.sname FROM student s WHERE s.snum IN 
+(SELECT e.snum FROM enrolled e GROUP BY e.snum HAVING COUNT(*)>= ALL(SELECT COUNT(*) 
+FROM enrolled e1 GROUP by e1.snum))
+q1.4. SELECT s.sname FROM student s WHERE s.snum NOT IN (SELECT e.snum FROM enrolled e)
+
+q2.2. SELECT p.pname FROM parts p WHERE p.pid IN 
+(SELECT c.pid FROM catalog c WHERE c.sid IN (SELECT s.sid FROM suppliers s WHERE s.sname 
+like '%Acme Widget%'))
+q2.3. SELECT DISTINCT s.sid FROM suppliers s JOIN catalog c ON(s.sid=c.sid) JOIN parts p 
+ON (p.pid=c.pid) WHERE p.color ='Red'
+q2.4. SELECT s.sname FROM suppliers s JOIN catalog c ON(s.sid=c.sid) WHERE c.pid IN
+ (SELECT p.pid from parts p WHERE p.color LIKE 'Green' AND p.color LIKE 'Red')
